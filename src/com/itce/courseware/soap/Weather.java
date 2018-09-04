@@ -16,11 +16,12 @@ import java.net.URL;
 import java.util.stream.Collectors;
 
 @WebService
-@SOAPBinding(style=SOAPBinding.Style.RPC)
+@SOAPBinding(style = SOAPBinding.Style.RPC)
 public class Weather {
     public String getTemperature(@WebParam(name = "town") String town) {
         return getOpenWeatherTemperature(town);
     }
+
     private static String getOpenWeatherTemperature(String town) {
         JSONObject json = null;
         try {
@@ -32,7 +33,7 @@ public class Weather {
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("charset", "utf-8");
             connection.connect();
-            if(connection.getResponseCode() == 404) {
+            if (connection.getResponseCode() == 404) {
                 return "City not found.";
             }
             InputStream inputStream = connection.getInputStream();
@@ -41,6 +42,6 @@ public class Weather {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return  ((JSONObject) json.get("main")).get("temp").toString();
+        return ((JSONObject) json.get("main")).get("temp").toString();
     }
 }
