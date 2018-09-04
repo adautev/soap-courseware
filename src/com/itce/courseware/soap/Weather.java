@@ -5,7 +5,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 import javax.jws.WebService;
-import javax.jws.WebParam
+import javax.jws.WebParam;
 import javax.jws.soap.SOAPBinding;
 import java.io.BufferedReader;
 import java.io.IOException;
