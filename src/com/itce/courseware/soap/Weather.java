@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 import javax.jws.WebService;
+import javax.jws.WebParam
 import javax.jws.soap.SOAPBinding;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 @WebService
 @SOAPBinding(style=SOAPBinding.Style.RPC)
 public class Weather {
-    public String getTemperature(String town) {
+    public String getTemperature(@WebParam(name = "town") String town) {
         return getOpenWeatherTemperature(town);
     }
     private static String getOpenWeatherTemperature(String town) {
